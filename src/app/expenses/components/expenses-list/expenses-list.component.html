@@ -1,0 +1,9 @@
+<div class="col-12" [ngClass]= "{'exp-rows-empty': !expenses.length, 'exp-rows-found': expenses.length}">
+    <rw-breadcrumb></rw-breadcrumb>
+    <rw-expense-search (searchValue)="searchExpenseHandler($event)"></rw-expense-search>
+    <rw-datatable-v1 *ngIf="columns.length" #datatable [columns]="columns" [rows]="expenses.length" (onPageChange)="onLimitChange($event)" 
+    (onFilterData)= "filterexpense($event)" (onClearFilters)="reset()" [totalRows]="tableAttributes.total" [values]="expenses"
+    [customFooterHtml] ="('<span>Total Expenses Amount' | translate) + ' = ' + '<b>' + expenseTotal + '</b><span>'"
+    [clearFilters]="clearFilters">
+    </rw-datatable-v1>
+</div>
